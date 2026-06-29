@@ -172,6 +172,7 @@ const ContactsController = {
     
     item.dataset.roleId = role.id;
     if (role.avatarImage) { avatar.style.backgroundImage = `url(${role.avatarImage})`; avatar.style.backgroundSize = 'cover'; avatar.style.backgroundPosition = 'center'; avatar.style.fontSize = '0'; } 
+    else if (role.id === 'shen_mian') { avatar.style.backgroundImage = 'url(https://yun.jxnews.com.cn/sjfxt/image/6a3c87471052416d94933d66.png)'; avatar.style.backgroundSize = 'cover'; avatar.style.backgroundPosition = 'center'; avatar.style.fontSize = '0'; }
     else { avatar.textContent = name === 'character' ? 'C' : initial; }
     nameEl.textContent = name; statusEl.textContent = role.char.signature || '';
     return clone;
@@ -237,6 +238,7 @@ const ProfileController = {
     ContactsDOM.profileBgImg.src = role.bgImage || ''; ContactsDOM.profileBgImg.style.display = role.bgImage ? 'block' : 'none';
     const name = role.remark || role.char.name || '?'; ContactsDOM.profileAvatarInitial.textContent = name === 'character' ? 'C' : Utils.getNameInitial(name);
     if (role.avatarImage) { ContactsDOM.profileAvatarImg.src = role.avatarImage; ContactsDOM.profileAvatarImg.classList.add('loaded'); ContactsDOM.profileAvatarInitial.style.display = 'none'; } 
+    else if (role.id === 'shen_mian') { ContactsDOM.profileAvatarImg.src = 'https://yun.jxnews.com.cn/sjfxt/image/6a3c87471052416d94933d66.png'; ContactsDOM.profileAvatarImg.classList.add('loaded'); ContactsDOM.profileAvatarInitial.style.display = 'none'; }
     else { ContactsDOM.profileAvatarImg.classList.remove('loaded'); ContactsDOM.profileAvatarInitial.style.display = ''; }
     ContactsDOM.profileRemark.textContent = role.remark || role.char.name || '未设置备注'; ContactsDOM.profileNickname.textContent = role.nickname || '未设置网名'; ContactsDOM.profileIdText.textContent = `ID: ${role.uid || ''}`; ContactsDOM.profileSignature.textContent = role.char.signature || '';
     this.renderPhotos(role);
@@ -554,6 +556,11 @@ const AppUI = {
       if (avatarEl && avatarEl.tagName !== 'IMG') {
         if (role.avatarImage) {
           avatarEl.style.backgroundImage = `url(${role.avatarImage})`;
+          avatarEl.style.backgroundSize = 'cover';
+          avatarEl.style.backgroundPosition = 'center';
+          avatarEl.innerText = '';
+        } else if (roleId === 'shen_mian') {
+          avatarEl.style.backgroundImage = `url(https://yun.jxnews.com.cn/sjfxt/image/6a3c87471052416d94933d66.png)`;
           avatarEl.style.backgroundSize = 'cover';
           avatarEl.style.backgroundPosition = 'center';
           avatarEl.innerText = '';

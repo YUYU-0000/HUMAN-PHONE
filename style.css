@@ -670,7 +670,7 @@ body {
 
 /* 聊天软件的颜色大仓库：在这里统一定义了一些常用的颜色和阴影，方便下面直接拿来用。 */
 :root {
-  --bg-overlay: rgba(0, 0, 0, 0.5);
+  --bg-overlay: rgba(0, 0, 0, 0.95);
   --bg-ticket-base: rgba(245, 245, 245, 0.85);
   --border-color: rgba(0, 0, 0, 0.5);
   --shadow-main: 0 15px 30px rgba(0, 0, 0, 0.6);
