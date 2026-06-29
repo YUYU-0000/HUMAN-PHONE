@@ -1,5 +1,17 @@
 @import url("https://fontsapi.zeoseven.com/494/main/result.css");
 
+/* 聊天软件的颜色大仓库（已移至文件最开头）：在这里统一定义了一些常用的颜色和阴影，方便下面直接拿来用。 */
+:root {
+  --bg-overlay: rgba(0, 0, 0, 0.95);
+  --bg-ticket-base: rgba(245, 245, 245, 0.85);
+  --border-color: rgba(0, 0, 0, 0.5);
+  --shadow-main: 0 15px 30px rgba(0, 0, 0, 0.6);
+  --shadow-active: 0 5px 12px rgba(0, 0, 0, 0.5);
+  --color-mini-text: #4E342E;   
+  --color-front-text: #EFEBE9;  
+  --back-ink: #4E342E;          
+}
+
 /* =======================================
    第一部分：全局和手机外壳基础
 =======================================
@@ -668,18 +680,6 @@ body {
 @font-face { font-family: "ZSFT-br"; src: url("https://fontsapi.zeoseven.com/br/semi-bold.woff2") format("woff2"); font-weight: 600; font-display: swap; }
 @font-face { font-family: "ZSFT-ej"; src: url("https://fontsapi.zeoseven.com/ej/main.woff2") format("woff2"); font-weight: 400; font-display: swap; }
 
-/* 聊天软件的颜色大仓库：在这里统一定义了一些常用的颜色和阴影，方便下面直接拿来用。 */
-:root {
-  --bg-overlay: rgba(0, 0, 0, 0.95);
-  --bg-ticket-base: rgba(245, 245, 245, 0.85);
-  --border-color: rgba(0, 0, 0, 0.5);
-  --shadow-main: 0 15px 30px rgba(0, 0, 0, 0.6);
-  --shadow-active: 0 5px 12px rgba(0, 0, 0, 0.5);
-  --color-mini-text: #4E342E;   
-  --color-front-text: #EFEBE9;  
-  --back-ink: #4E342E;          
-}
-
 /* 允许打字的地方：关掉系统自带的难看边框，并把鼠标变成打字的形状。 */
 [contenteditable="true"] { 
   outline: none; cursor: text; -webkit-user-select: auto; user-select: auto; 
@@ -1231,6 +1231,10 @@ body {
   -webkit-mask-position: bottom left, bottom right, top left, center 10px;
   -webkit-mask-size: 51% 10px, 51% 10px, 10px 10px, 100% calc(100% - 20px);
   -webkit-mask-repeat: no-repeat, no-repeat, repeat-x, no-repeat;
+  mask-image: radial-gradient(circle at 0 100%, transparent 6px, black 6.5px), radial-gradient(circle at 100% 100%, transparent 6px, black 6.5px), radial-gradient(circle at 5px 0, transparent 2.5px, black 3px), linear-gradient(black, black);
+  mask-position: bottom left, bottom right, top left, center 10px;
+  mask-size: 51% 10px, 51% 10px, 10px 10px, 100% calc(100% - 20px);
+  mask-repeat: no-repeat, no-repeat, repeat-x, no-repeat;
 }
 /* 票据的下半段：和上面一样，给上面挖半圆，对接拼成一张完整的门票。 */
 .ticket-part.lower {
@@ -1239,6 +1243,10 @@ body {
   -webkit-mask-position: top left, top right, bottom left, center top 10px;
   -webkit-mask-size: 51% 10px, 51% 10px, 10px 10px, 100% calc(100% - 20px);
   -webkit-mask-repeat: no-repeat, no-repeat, repeat-x, no-repeat;
+  mask-image: radial-gradient(circle at 0 0, transparent 6px, black 6.5px), radial-gradient(circle at 100% 0, transparent 6px, black 6.5px), radial-gradient(circle at 5px 100%, transparent 2.5px, black 3px), linear-gradient(black, black);
+  mask-position: top left, top right, bottom left, center top 10px;
+  mask-size: 51% 10px, 51% 10px, 10px 10px, 100% calc(100% - 20px);
+  mask-repeat: no-repeat, no-repeat, repeat-x, no-repeat;
 }
 
 /* 规定大票据上下半截的高矮。 */
@@ -1246,8 +1254,26 @@ body {
 /* 规定缩略图版小票据的高矮。 */
 .mini-upper { height: 56px; padding: 6px; } .mini-lower { height: 26px; padding: 4px; display: flex; flex-direction: column; justify-content: center; }
 /* 给小票据也挖个相应的迷你锯齿边。 */
-.ticket-part.mini-upper { -webkit-mask-image: radial-gradient(circle at 0 100%, transparent 2.5px, black 3px), radial-gradient(circle at 100% 100%, transparent 2.5px, black 3px), radial-gradient(circle at 3px 0, transparent 1.5px, black 2px), linear-gradient(black, black); -webkit-mask-size: 51% 5px, 51% 5px, 6px 5px, 100% calc(100% - 10px); -webkit-mask-position: bottom left, bottom right, top left, center 5px; }
-.ticket-part.mini-lower { -webkit-mask-image: radial-gradient(circle at 0 0, transparent 2.5px, black 3px), radial-gradient(circle at 100% 0, transparent 2.5px, black 3px), radial-gradient(circle at 3px 100%, transparent 1.5px, black 2px), linear-gradient(black, black); -webkit-mask-size: 51% 5px, 51% 5px, 6px 5px, 100% calc(100% - 10px); -webkit-mask-position: top left, top right, bottom left, center top 5px; }
+.ticket-part.mini-upper { 
+  -webkit-mask-image: radial-gradient(circle at 0 100%, transparent 2.5px, black 3px), radial-gradient(circle at 100% 100%, transparent 2.5px, black 3px), radial-gradient(circle at 3px 0, transparent 1.5px, black 2px), linear-gradient(black, black); 
+  -webkit-mask-size: 51% 5px, 51% 5px, 6px 5px, 100% calc(100% - 10px); 
+  -webkit-mask-position: bottom left, bottom right, top left, center 5px; 
+  -webkit-mask-repeat: no-repeat, no-repeat, repeat-x, no-repeat;
+  mask-image: radial-gradient(circle at 0 100%, transparent 2.5px, black 3px), radial-gradient(circle at 100% 100%, transparent 2.5px, black 3px), radial-gradient(circle at 3px 0, transparent 1.5px, black 2px), linear-gradient(black, black); 
+  mask-size: 51% 5px, 51% 5px, 6px 5px, 100% calc(100% - 10px); 
+  mask-position: bottom left, bottom right, top left, center 5px; 
+  mask-repeat: no-repeat, no-repeat, repeat-x, no-repeat;
+}
+.ticket-part.mini-lower { 
+  -webkit-mask-image: radial-gradient(circle at 0 0, transparent 2.5px, black 3px), radial-gradient(circle at 100% 0, transparent 2.5px, black 3px), radial-gradient(circle at 3px 100%, transparent 1.5px, black 2px), linear-gradient(black, black); 
+  -webkit-mask-size: 51% 5px, 51% 5px, 6px 5px, 100% calc(100% - 10px); 
+  -webkit-mask-position: top left, top right, bottom left, center top 5px; 
+  -webkit-mask-repeat: no-repeat, no-repeat, repeat-x, no-repeat;
+  mask-image: radial-gradient(circle at 0 0, transparent 2.5px, black 3px), radial-gradient(circle at 100% 0, transparent 2.5px, black 3px), radial-gradient(circle at 3px 100%, transparent 1.5px, black 2px), linear-gradient(black, black); 
+  mask-size: 51% 5px, 51% 5px, 6px 5px, 100% calc(100% - 10px); 
+  mask-position: top left, top right, bottom left, center top 5px; 
+  mask-repeat: no-repeat, no-repeat, repeat-x, no-repeat;
+}
 
 /* 票据正面的大背景图（底图）。 */
 .ticket-bg-img { position: absolute; left: 0; width: 100%; height: 333px; object-fit: cover; z-index: 0; display: none; }

@@ -89,23 +89,23 @@ function togglePlay() {
     isPlaying = !isPlaying;
     
     if(isPlaying) {
-        // 如果现在要播放了，给各个零件加上正在播放的外观效果（电脑会去 CSS 里找这些名字换衣服）
-        tonearm.classList.add('active-arm'); // 把唱臂放上去
-        recordDisc.classList.add('playing'); // 让唱片转起来
-        powerSwitch.classList.add('playing-switch'); // 拨动开关
+        // 加上了判空保护，避免因为找不到元素而报错
+        if(tonearm) tonearm.classList.add('active-arm'); 
+        if(recordDisc) recordDisc.classList.add('playing'); 
+        if(powerSwitch) powerSwitch.classList.add('playing-switch'); 
         
         // 每隔 800 毫秒，进度条往前走一点点
         playInterval = setInterval(() => {
-            // 如果进度满了（大于 100），就清零重来；不然就加 1
-            progressVal = progressVal > 100 ? 0 : progressVal + 1;
+            // 如果进度达到或超过 100，就清零重来；不然就加 1
+            progressVal = progressVal >= 100 ? 0 : progressVal + 1;
             // 让屏幕上进度条的宽度变长，看起来就像在正常播放一样
             if(musicProgress) musicProgress.style.width = progressVal + '%';
         }, 800);
     } else {
-        // 如果现在要暂停，就把那些正在播放的外观效果脱掉
-        tonearm.classList.remove('active-arm'); // 唱臂拿开
-        recordDisc.classList.remove('playing'); // 唱片停下
-        powerSwitch.classList.remove('playing-switch'); // 开关复位
+        // 同样加上判空保护
+        if(tonearm) tonearm.classList.remove('active-arm'); 
+        if(recordDisc) recordDisc.classList.remove('playing'); 
+        if(powerSwitch) powerSwitch.classList.remove('playing-switch'); 
         
         // 把进度条往前走的定时器关掉，别让它继续跑了
         clearInterval(playInterval);

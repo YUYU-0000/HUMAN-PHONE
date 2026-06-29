@@ -460,7 +460,7 @@ const ScrollBounceController = {
  * ==========================================
  */
 const AppConfig = {
-  ICONS: { favorite: 'https://yun.jxnews.com.cn/sjfxt/image/6a3a50df1052416d94933d44.png', edit: 'https://web.xinyifm.cn/oss/xc-app/qdqqd/FBKHxeke.png', recall: 'https://cdncs.ykt.cbern.com.cn/v0.1/download?path=/zxx_feedback/qdqqd/1782170690596.png', quote: 'https://file.icve.com.cn/file_doc/yaEFfq6u/7nVzoaqI.png', delete: 'https://www.yn12377.cn/jubao/upload/smjb/2026/06/23/9c221cda18db46e6ad79c07e9c99b767.png', copy: 'https://static.eeo.cn/upload/images/20260623/3508c9bb2491cdf99366.png', select: 'https://www.yn12377.cn/jubao/upload/smjb/2026/06/23/7358eceef6ad4d1ea54d0d372d4a8dd3.png' },
+  ICONS: { favorite: 'icons/bookmark.svg', edit: 'icons/edit.svg', recall: 'icons/recall.svg', quote: 'icons/quote.svg', delete: 'icons/delete.svg', copy: 'icons/copy.svg', select: 'icons/select.svg' },
   DEFAULT_EMOJIS: ['😺','😸','😼','😽','😾','😿','😻','😹','🙀','❤️','🔥','✨','👍','😭','😂','🥺','👀','💯','🎉','🤔','🙌','👏','🎈','💥', '💤'],
   TABS: ['tab-messages', 'tab-contacts', 'tab-space', 'tab-schedule', 'tab-moments']
 };
