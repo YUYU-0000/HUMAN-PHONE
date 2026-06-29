@@ -93,6 +93,17 @@ const StateManager = {
  * ==========================================
  */
 const Utils = {
+  // 转义 HTML 字符，防止 XSS 攻击
+  escapeHTML(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  },
+
   // 查字典小能手：你给它一个汉字，它能告诉你这个汉字的拼音首字母是什么（比如“沈”就是S），专门用来给通讯录按字母排序。
   getPinyinInitial(char) {
     if (!char) return '#';
@@ -619,10 +630,18 @@ const AppUI = {
   appendMessage(screenId, role, content, quoteText = null) {
     const roleId = screenId.replace('chatScreen-', '');
     const msgArea = document.getElementById(screenId).querySelector('.chat-messages'); const { ts, timeStr } = this.getMsgTimeInfo();
-    let quoteHtml = quoteText ? `<div class="quote-ref" style="background:rgba(0,0,0,0.1); border-left:2px solid #f2c94c; padding:4px 8px; font-size:10px; margin-bottom:6px; border-radius:4px; color:rgba(0,0,0,0.5);">${quoteText}</div>` : '';
+    
+    // 对引用的文字进行转义防 XSS
+    let safeQuoteText = quoteText ? Utils.escapeHTML(quoteText) : '';
+    let quoteHtml = safeQuoteText ? `<div class="quote-ref" style="background:rgba(0,0,0,0.1); border-left:2px solid #f2c94c; padding:4px 8px; font-size:10px; margin-bottom:6px; border-radius:4px; color:rgba(0,0,0,0.5);">${safeQuoteText}</div>` : '';
+    
     let leftAvatar = role === 'receiver' ? `<div class="avatar-col">${this.getAvatarHtml(false, roleId)}<span class="msg-time">${timeStr}</span></div>` : '';
     let rightAvatar = role === 'sender' ? `<div class="avatar-col">${this.getAvatarHtml(true)}<span class="msg-time">${timeStr}</span></div>` : '';
-    const html = `<div class="msg-row ${role}" data-timestamp="${ts}"><div class="msg-checkbox"></div><div class="multi-overlay"></div>${leftAvatar}<div class="msg-content"><div class="msg-bubble">${quoteHtml}${content.replace(/\n/g, '<br>')}</div></div>${rightAvatar}</div>`;
+    
+    // 对消息主体内容进行转义防 XSS，随后将换行符 \n 替换为 <br> 以保证格式
+    let safeContent = Utils.escapeHTML(content).replace(/\n/g, '<br>');
+    
+    const html = `<div class="msg-row ${role}" data-timestamp="${ts}"><div class="msg-checkbox"></div><div class="multi-overlay"></div>${leftAvatar}<div class="msg-content"><div class="msg-bubble">${quoteHtml}${safeContent}</div></div>${rightAvatar}</div>`;
     msgArea.insertAdjacentHTML('beforeend', html); setTimeout(() => msgArea.scrollTop = msgArea.scrollHeight, 50); AppState.saveChatRecord(msgArea.id);
   },
   
@@ -931,7 +950,10 @@ const AppEvents = {
       const { activeTargetRow } = AppState.getState(); if(!activeTargetRow) return;
       let t = activeTargetRow.querySelector('.msg-bubble')?.innerText || ''; if(t.includes('引用\n')) t = t.split('引用\n')[1].trim(); 
       activeTargetRow.className = 'msg-row sys-msg'; activeTargetRow.style.justifyContent = 'center'; 
-      activeTargetRow.innerHTML = `<div class="msg-content" style="max-width: 100%; align-items: center;"><div class="msg-bubble sys-recall-bubble" style="background: transparent; border: none; color: rgba(255,255,255,0.5); font-size: 11px; white-space: nowrap; padding: 4px;">你 撤回了一条消息 <span data-action="re-edit-text" data-text="${t.replace(/"/g, '&quot;')}" style="color: #4a90e2; cursor: pointer; margin-left: 4px;">重新编辑</span></div></div>`; 
+      
+      // 对文本内容进行 XSS 转义，防止直接注入攻击
+      let safeT = Utils.escapeHTML(t);
+      activeTargetRow.innerHTML = `<div class="msg-content" style="max-width: 100%; align-items: center;"><div class="msg-bubble sys-recall-bubble" style="background: transparent; border: none; color: rgba(255,255,255,0.5); font-size: 11px; white-space: nowrap; padding: 4px;">你 撤回了一条消息 <span data-action="re-edit-text" data-text="${safeT}" style="color: #4a90e2; cursor: pointer; margin-left: 4px;">重新编辑</span></div></div>`; 
       AppUI.hideAllFloatMenus(); AppState.saveChatRecord(activeTargetRow.closest('.chat-messages').id);
     },
     editMessage() {
@@ -944,7 +966,10 @@ const AppEvents = {
       const { activeTargetRow } = AppState.getState(); if(!activeTargetRow) return; let b = activeTargetRow.querySelector('.msg-bubble') || activeTargetRow.querySelector('.file-info'); if(!b) return; 
       let t = b.innerText; let currentQuoteText = t.length > 25 ? t.substring(0, 25) + '...' : t; AppState.setState({ currentQuoteText });
       let scr = activeTargetRow.closest('.screen-chat'); let q = scr.querySelector('.quote-bar'); 
-      q.innerHTML = `<div class="quote-content" style="border-left: 2px solid #f2c94c; padding-left: 8px; color: rgba(255,255,255,0.7); font-size: 11px;"><div style="font-size: 9px; opacity:0.5; margin-bottom:2px;">引用</div>${currentQuoteText}</div><div data-action="close-quote" style="cursor:pointer; color: rgba(255,255,255,0.5); padding: 4px;">×</div>`; 
+      
+      // 在填充 quote-bar 的 innerHTML 之前进行安全转义处理
+      let safeQuote = Utils.escapeHTML(currentQuoteText);
+      q.innerHTML = `<div class="quote-content" style="border-left: 2px solid #f2c94c; padding-left: 8px; color: rgba(255,255,255,0.7); font-size: 11px;"><div style="font-size: 9px; opacity:0.5; margin-bottom:2px;">引用</div>${safeQuote}</div><div data-action="close-quote" style="cursor:pointer; color: rgba(255,255,255,0.5); padding: 4px;">×</div>`; 
       q.style.display = 'flex'; AppUI.hideAllFloatMenus(); scr.querySelector('.msg-input').focus();
     },
     showInlineInput(actionEl, e) {
