@@ -17,7 +17,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #1a1a1a; 
+    background-color: #333333; 
     -webkit-user-select: none;
     user-select: none;
     font-family: "KokoroMinchoutai", sans-serif;
@@ -31,7 +31,7 @@ body {
     border: none; 
     border-radius: 36px;
     box-shadow: 0 0 30px rgba(0,0,0,0.6);
-    background: url("https://cac-assets.oss-cn-shanghai.aliyuncs.com/cms/report/12d1d121/bVCgDuKc_vip.jpg") center/cover no-repeat;
+    background: #333333;
     position: relative;
     overflow: hidden;
 }
@@ -259,7 +259,6 @@ body {
     width: 98%; height: 120px; 
     background-color: rgba(30, 30, 30, 0.45);
     border: 1px solid rgba(255, 255, 255, 0.15); 
-    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
     border-radius: 26px;
     z-index: 100; opacity: 0; visibility: hidden; pointer-events: none;
     transition: transform 0.4s cubic-bezier(0.4, -0.15, 0.2, 1), opacity 0.25s ease, visibility 0.4s; 
@@ -449,7 +448,6 @@ body {
     width: 82%; aspect-ratio: 1 / 1; 
     display: flex; justify-content: center; align-items: center;
     border-radius: 14px; cursor: pointer;
-    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
     background-color: rgba(255, 255, 255, 0.05); border: none; 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06); transition: all 0.3s ease;
 }
@@ -480,7 +478,7 @@ body {
 /* 大号小组件的统一样式：占用更多格子的那种大方块，也是毛玻璃效果。 */
 .widget-box {
     width: 100%; height: auto; aspect-ratio: 1 / 1; align-self: start; 
-    border-radius: 16px; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    border-radius: 16px; 
     background-color: rgba(255, 255, 255, 0.05); border: none; 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06); 
     display: flex; justify-content: center; align-items: center;
@@ -632,7 +630,7 @@ body {
 /* 底部常驻的那条导航栏背景：半透明带毛玻璃，边框有一点点白，像苹果底部的Dock栏。 */
 .toolbar {
     position: absolute; bottom: 10px; left: 15px; right: 15px; 
-    background-color: rgba(158, 197, 232, 0.15); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); 
+    background-color: rgba(158, 197, 232, 0.15); 
     border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 18px; 
     display: flex; align-items: center; justify-content: space-between; padding: 8px 14px; z-index: 6; 
 }
@@ -705,7 +703,7 @@ body {
 /* 聊天软件自己的底部切换条：深灰色、毛玻璃、悬浮在底部。 */
 .nav-bar {
   position: absolute; bottom: 15px; left: 10px; right: 10px; height: 40px; 
-  background-color: rgba(45, 48, 54, 0.65); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); 
+  background-color: rgba(45, 48, 54, 0.65); 
   border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; 
   display: flex; align-items: center; justify-content: space-around; padding: 0 10px; box-sizing: border-box; 
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); z-index: 10;
@@ -865,7 +863,7 @@ body {
 .add-menu-overlay { position: absolute; inset: 0; z-index: 3000; opacity: 0; pointer-events: none; visibility: hidden; transition: opacity 0.2s, visibility 0s 0.2s; }
 .add-menu-overlay.show { opacity: 1; pointer-events: auto; visibility: visible; transition: opacity 0.2s, visibility 0s; }
 /* 弹出菜单的那个黑色小气泡框：带毛玻璃背景和圆角，动画是从右上角放大弹出来。 */
-.add-menu-bubble { position: absolute; top: 68px; right: 16px; background: rgba(36,38,44,0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); width: 140px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 6px 20px rgba(0,0,0,0.5); display: flex; flex-direction: column; overflow: visible; transform: scale(0.9) translateY(-6px); transform-origin: top right; opacity: 0; transition: transform 0.22s cubic-bezier(0.2,0.8,0.2,1), opacity 0.18s ease; }
+.add-menu-bubble { position: absolute; top: 68px; right: 16px; background: rgba(36,38,44,0.95); width: 140px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 6px 20px rgba(0,0,0,0.5); display: flex; flex-direction: column; overflow: visible; transform: scale(0.9) translateY(-6px); transform-origin: top right; opacity: 0; transition: transform 0.22s cubic-bezier(0.2,0.8,0.2,1), opacity 0.18s ease; }
 /* 气泡完全弹出。 */
 .add-menu-overlay.show .add-menu-bubble { transform: scale(1) translateY(0); opacity: 1; }
 /* 小气泡顶上那个小小的朝上的三角尖尖。 */
@@ -883,17 +881,17 @@ body {
 */
 
 /* 个人主页整个大容器：从屏幕右边滑进来的，黑色底，挡住其他所有东西。 */
-.profile-screen { position: absolute; inset: 0; z-index: 100; display: flex; flex-direction: column; background: #0e0e0e; transform: translateX(100%); opacity: 0; visibility: hidden; transition: transform 0.45s cubic-bezier(0.25,0.9,0.3,1), opacity 0.35s, visibility 0s 0.45s; pointer-events: none; overflow-y: auto; scrollbar-width: none; }
+.profile-screen { position: absolute; inset: 0; z-index: 100; display: flex; flex-direction: column; background: #333333; transform: translateX(100%); opacity: 0; visibility: hidden; transition: transform 0.45s cubic-bezier(0.25,0.9,0.3,1), opacity 0.35s, visibility 0s 0.45s; pointer-events: none; overflow-y: auto; scrollbar-width: none; }
 .profile-screen::-webkit-scrollbar { display: none; }
 /* 激活时，刷的一下从右滑到中间。 */
 .profile-screen.active { transform: translateX(0); opacity: 1; visibility: visible; transition: transform 0.45s cubic-bezier(0.25,0.9,0.3,1), opacity 0.35s, visibility 0s; pointer-events: auto; }
 
 /* 个人主页上半部的大背景图区域：一块200像素高的黑色地带。 */
-.profile-bg { position: relative; width: 100%; height: 200px; background: #1a1a1a; overflow: hidden; flex-shrink: 0; cursor: pointer; }
+.profile-bg { position: relative; width: 100%; height: 200px; background: #333333; overflow: hidden; flex-shrink: 0; cursor: pointer; }
 /* 背景图本体：盖在背景区里，透明度稍微调低了一点。 */
 .profile-bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.7; display: none; }
 /* 左上角的圆形返回按钮：“<”号，半透明毛玻璃底座。 */
-.profile-back-btn { position: absolute; top: 44px; left: 14px; z-index: 10; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.85); cursor: pointer; background: rgba(0,0,0,0.3); border-radius: 50%; backdrop-filter: blur(8px); }
+.profile-back-btn { position: absolute; top: 44px; left: 14px; z-index: 10; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.85); cursor: pointer; background: rgba(0,0,0,0.3); border-radius: 50%; }
 .profile-back-btn:active { opacity: 0.6; }
 
 /* 包含头像、名字的那行内容区：稍微往上提了一点，让头像一半盖在背景图上。 */
@@ -953,7 +951,7 @@ body {
 /* 聊天对话大页面：点人进去跟你一句我一句说话的那个页面。从屏幕右边带毛玻璃效果滑进来。 */
 .screen-chat {
   position: absolute; inset: 0; z-index: 50; display: flex; flex-direction: column;
-  background: rgba(18, 18, 18, 0.65); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+  background: #333333; 
   transform: translateX(100%); opacity: 0; visibility: hidden; 
   transition: transform 0.5s cubic-bezier(0.25, 0.9, 0.3, 1), opacity 0.35s ease, visibility 0s 0.5s; 
   pointer-events: none;
@@ -1131,7 +1129,7 @@ body {
 */
 
 /* 长按消息弹出来的横条菜单（复制、转发、撤回等）：带毛玻璃和阴影，默认透明藏着。 */
-.msg-context-menu { position: absolute; background: rgba(40, 42, 48, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.4); z-index: 1000; display: grid; grid-template-columns: repeat(6, 1fr); opacity: 0; pointer-events: none; transition: opacity 0.2s ease; color: rgba(255,255,255,0.8); width: 240px; height: 36px; box-sizing: border-box; margin: 0; }
+.msg-context-menu { position: absolute; background: rgba(40, 42, 48, 0.85); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.4); z-index: 1000; display: grid; grid-template-columns: repeat(6, 1fr); opacity: 0; pointer-events: none; transition: opacity 0.2s ease; color: rgba(255,255,255,0.8); width: 240px; height: 36px; box-sizing: border-box; margin: 0; }
 /* 弹出来现形。 */
 .msg-context-menu.show { opacity: 1; pointer-events: auto; }
 /* 菜单里的单个小功能按钮，图标字很小。 */
@@ -1141,7 +1139,7 @@ body {
 .menu-action span { font-size: 9px; line-height: 1; transform: scale(0.85); }
 
 /* 长按消息上面弹出来的一排能直接贴在消息上的表态表情框。 */
-.inline-reaction-picker { position: absolute; background: rgba(40, 42, 48, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.4); z-index: 1001; opacity: 0; pointer-events: none; transition: opacity 0.2s ease, height 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); width: 240px; height: 36px; box-sizing: border-box; padding: 0; margin: 0; }
+.inline-reaction-picker { position: absolute; background: rgba(40, 42, 48, 0.85); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.4); z-index: 1001; opacity: 0; pointer-events: none; transition: opacity 0.2s ease, height 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); width: 240px; height: 36px; box-sizing: border-box; padding: 0; margin: 0; }
 .inline-reaction-picker.show { opacity: 1; pointer-events: auto; }
 /* 如果点展开，这个表情框会被拉高变成一个大面板。 */
 .inline-reaction-picker.expanded { height: 144px; }
@@ -1175,7 +1173,7 @@ body {
 /* 票据展示界面的大黑遮罩：弹出来铺满全屏，背景黑黑的。 */
 .ticket-modal-overlay {
   position: absolute; inset: 0; z-index: 4000; display: flex; flex-direction: column; align-items: center; 
-  background: var(--bg-overlay); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+  background: var(--bg-overlay); 
   opacity: 0; pointer-events: none; visibility: hidden; transition: opacity 0.35s, visibility 0s 0.35s;
   overflow-y: auto; padding: 40px 0; -ms-overflow-style: none; scrollbar-width: none;
 }
@@ -1223,7 +1221,7 @@ body {
 .ticket-flipper.flipped .ticket-face.front, .ticket-flipper:not(.flipped) .ticket-face.back { pointer-events: none !important; }
 
 /* 票据的上半截或下半截纸片。 */
-.ticket-part { background-color: var(--bg-ticket-base); width: 100%; box-sizing: border-box; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); position: relative; overflow: hidden; }
+.ticket-part { background-color: var(--bg-ticket-base); width: 100%; box-sizing: border-box; position: relative; overflow: hidden; }
 /* 带个细边框。 */
 .ticket-part.char-part { border: 0.5px solid var(--border-color); }
 /* 票据的上半段：用了一堆极其复杂的遮罩代码（mask），给它的两边挖出那种像电影票一样的半圆形缺口，下面画上虚线撕裂口。 */
@@ -1329,7 +1327,7 @@ body {
     transform: scale(0.95) translateY(20px);
     pointer-events: none;
     visibility: hidden;
-    background-color: #000; /* 兜底背景，防止动画过程中的穿透闪烁（怕黑屏漏光） */
+    background-color: #333333; /* 兜底背景，防止动画过程中的穿透闪烁（怕黑屏漏光） */
 }
 /* 打开聊天软件的魔法效果：它从下面慢慢放大弹上来，完全显示，遮住桌面。 */
 #screenChatHome.active-screen {
@@ -1345,6 +1343,4 @@ body {
     padding: 0 12px;
     background-color: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
 }

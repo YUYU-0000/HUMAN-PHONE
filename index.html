@@ -8,7 +8,6 @@
     />
     <title>YUYU-HUMAN-BEING/*</title>
 
-    <!-- 🎀 主界面桌面用的字体 -->
     <link
       href="https://fontsapi.zeoseven.com/411/main/result.css"
       onload="this.rel = 'stylesheet'"
@@ -34,7 +33,6 @@
         href="https://fontsapi.zeoseven.com/577/main/result.css"
     /></noscript>
 
-    <!-- 🎀 聊天应用用的字体 -->
     <link
       href="https://fontsapi.zeoseven.com/5/main/result.css"
       onload="this.rel = 'stylesheet'"
@@ -84,16 +82,9 @@
         href="https://fontsapi.zeoseven.com/2207/main/result.css"
     /></noscript>
 
-    <!-- 🎀 所有样式都在这个文件里 -->
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- =============================================
-       🧩 模板区：这些 template 不会直接显示在页面上，
-       是JS用来"复制粘贴"生成新元素的模具
-       ============================================= -->
-
-    <!-- 📋 联系人条目模板：好友列表里每一个人长什么样 -->
     <template id="tpl-contact-item">
       <div class="contact-item" data-role-id="">
         <div class="contact-avatar"></div>
@@ -103,11 +94,9 @@
         </div>
       </div>
     </template>
-    <!-- 📋 字母标题模板：好友列表按字母排序时的分隔标题 -->
     <template id="tpl-alpha-title">
       <div class="alpha-title"></div>
     </template>
-    <!-- 📋 聊天窗口模板：每个角色的聊天窗口都从这里复制出来 -->
     <template id="tpl-chat-screen">
       <div class="screen-chat">
         <div class="chat-detail-header">
@@ -178,7 +167,6 @@
       </div>
     </template>
 
-    <!-- 📂 隐藏的文件选择器：点"上传图片"时弹出来的，平时看不见 -->
     <input
       type="file"
       id="imagePicker"
@@ -199,21 +187,14 @@
       accept="image/*"
     />
 
-    <!-- =============================================
-       📱 手机外壳：整个模拟手机从这里开始！
-       ============================================= -->
-
     <div class="phone-frame" id="phoneContainer">
-      <!-- 🔒 锁屏界面：显示时间和日期，往上滑可以解锁 -->
       <div class="screen-lock">
         <div class="time-display" id="time-text">00:00</div>
         <div class="date-display" id="date-text">2026/01/01</div>
         <div id="unlock-btn"></div>
       </div>
 
-      <!-- 🏠 桌面主界面：解锁后看到的桌面，有应用图标、组件等 -->
       <div class="screen-home">
-        <!-- 💊 灵动岛：顶部的小胶囊，显示音乐状态等 -->
         <div class="dynamic-island" id="dynamicIsland">
           <div class="di-collapsed">
             <img
@@ -227,7 +208,6 @@
           </div>
         </div>
 
-        <!-- 💊 灵动岛展开卡片：点击灵动岛后展开的音乐控制面板 -->
         <div class="di-card" id="diCard">
           <div class="di-expanded">
             <div class="di-exp-top">
@@ -255,15 +235,12 @@
           </div>
         </div>
 
-        <!-- 🕐 桌面大时钟 -->
         <div class="large-timestamp">
           <span id="large-hour"></span>
           <span id="large-minute"></span>
         </div>
 
-        <!-- 📱 桌面内容区：搜索栏 + 应用图标 + 组件 -->
         <div class="home-content">
-          <!-- 🔍 桌面搜索栏（装饰用） -->
           <div class="search-bar">
             <input type="text" class="search-input" placeholder="搜索" />
             <img
@@ -273,9 +250,7 @@
             />
           </div>
 
-          <!-- 📦 应用和组件网格 -->
           <div class="main-grid">
-            <!-- 💬 聊天应用图标：点击进入聊天界面 -->
             <div class="app-wrapper top-app-1">
               <div class="home-app-item">
                 <img
@@ -293,7 +268,6 @@
               <span class="app-label">APP</span>
             </div>
 
-            <!-- 🎵 音乐组件：唱片机样式，可以播放/暂停 -->
             <div class="widget-box music-widget" id="musicWidget">
               <div class="music-progress">
                 <div class="music-progress-fill" id="musicProgress"></div>
@@ -322,7 +296,6 @@
               </div>
             </div>
 
-            <!-- 📷 照片组件：点击可以上传一张照片显示在桌面 -->
             <div class="widget-box photo-widget" id="photoWidget">
               <input type="file" id="photoInput" accept="image/*" />
               <div class="widget-placeholder">+</div>
@@ -343,7 +316,6 @@
           </div>
         </div>
 
-        <!-- 🔧 底部工具栏：设置、角色、记忆、生态（后续功能） -->
         <div class="toolbar">
           <div class="app-item">
             <img
@@ -364,20 +336,14 @@
         </div>
       </div>
 
-      <!-- =============================================
-           💬 聊天应用区：点桌面CHAT图标后显示的整个聊天界面
-           包含5个标签页：消息列表、好友列表、SPACE、日程、动态
-           ============================================= -->
       <div class="screen-chat-home" id="screenChatHome">
-        <!-- 📨 标签页1：消息列表（MESSAGES） -->
         <div
           id="tab-messages"
           class="tab-content active"
           style="padding-bottom: 80px"
         >
           <div class="chat-header">
-            <div style="display: flex; flex-direction: column; gap: 12px">
-              <!-- ⬅️ 返回桌面按钮 -->
+            <div style="display: flex; align-items: center; gap: 12px">
               <div
                 class="header-icon"
                 id="btnBackToHome"
@@ -396,18 +362,17 @@
           </div>
           <div class="search-container">
             <div class="search-bar">
-              <input type="text" class="search-input" placeholder="SEARCH..." />
               <img
                 src="icons/search.svg"
                 class="search-icon"
                 alt="搜索"
               />
+              <input type="text" class="search-input" placeholder="SEARCH..." />
             </div>
           </div>
           <div class="chat-list"></div>
         </div>
 
-        <!-- 👥 标签页2：好友列表（CONTACTS），有分组/好友/群聊/机器人四个子标签 -->
         <div id="tab-contacts" class="tab-content">
           <div class="chat-header">
             <h1>CONTACTS</h1>
@@ -480,7 +445,6 @@
           </div>
         </div>
 
-        <!-- 🚧 标签页3-5：施工中，后续功能 -->
         <div id="tab-space" class="tab-content">
           <div class="tab-header-generic">
             <div class="tab-title">SPACE</div>
@@ -499,8 +463,6 @@
             <div class="tab-subtitle">正在施工中</div>
           </div>
         </div>
-
-        <!-- 🧭 聊天应用底部导航栏：切换五个标签页 -->
 
         <div class="nav-bar" id="navBar">
           <div class="nav-item active" data-action="switch-tab">
@@ -544,7 +506,6 @@
         </div>
       </div>
 
-      <!-- 👤 角色个人主页：点好友列表里的角色会滑出来，显示头像、备注、签名等 -->
       <div class="profile-screen" id="profileScreen">
         <div class="profile-bg" id="profileBg">
           <img class="profile-bg-img" id="profileBgImg" src="" alt="" />
@@ -625,14 +586,10 @@
         </div>
       </div>
 
-      <!-- 😺 表情选择器：长按消息后弹出的表情面板 -->
       <div id="inlineReactionPicker" class="inline-reaction-picker">
         <div class="reaction-grid-inner" id="reactionGridInner"></div>
       </div>
-      <!-- 📋 右键菜单：长按消息后弹出的操作菜单（复制、删除、编辑等） -->
       <div id="msgContextMenu" class="msg-context-menu"></div>
-
-      <!-- ➕ 添加好友/创建群聊的弹出菜单 -->
 
       <div class="add-menu-overlay" id="addMenuOverlay">
         <div class="add-menu-bubble" id="addMenuBubble">
@@ -645,7 +602,6 @@
         </div>
       </div>
 
-      <!-- 🎫 票根弹窗：角色设定界面，可以翻转查看正面（名字）和背面（详细设定） -->
       <div class="ticket-modal-overlay" id="ticketModal">
         <div class="ticket-workspace">
           <div class="strip-col">
@@ -808,12 +764,8 @@
       </div>
     </div>
 
-    <!-- 📜 JS文件加载区 -->
     <script src="chat-app.js"></script>
-    <!-- 聊天应用的所有逻辑 -->
     <script src="main.js"></script>
-    <!-- 桌面功能：锁屏、时钟、音乐、照片、跳转 -->
     <script src="dynamic-island.js"></script>
-    <!-- 灵动岛的交互逻辑 -->
-  </body>
+    </body>
 </html>
