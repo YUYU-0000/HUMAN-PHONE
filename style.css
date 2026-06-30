@@ -147,11 +147,11 @@ body {
 /* 桌面大时钟：屏幕左上角那个竖着排的超大时间数字。 */
 .large-timestamp {
     position: absolute;
-    top: 32px; left: 20px;
+    top: 15px; left: 20px;
     display: flex; flex-direction: column; align-items: center;
     color: rgba(255, 255, 255, 0.9);
     font-family: "AR PL UKai CN", serif; 
-    font-size: 3.2rem; font-weight: 100; line-height: 0.9; 
+    font-size: 3.5rem; font-weight: 100; line-height: 0.9; 
     text-align: center; text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     font-variant-numeric: tabular-nums; 
 }
