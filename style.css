@@ -442,7 +442,7 @@ body {
 .tab-content.active { display: flex; }
 
 /* 聊天页面的大标题区域：设置边距，留出顶部的空间。 */
-.tab-header-generic { padding: 40px 20px 15px; }
+.tab-header-generic { padding: 15px 20px 15px; }
 /* 大标题文字：比如“CHAT”这几个大字，加粗发白。 */
 .tab-title { color: rgba(255, 255, 255, 0.95); font-size: 22px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin: 0; }
 /* 大标题下的一排小字。 */
@@ -479,7 +479,7 @@ body {
 @keyframes beamUp { 0% { transform: translateX(-50%) scaleY(0); opacity: 0; } 100% { transform: translateX(-50%) scaleY(1); opacity: 1; } }
 
 /* 聊天主界面的头部：放标题和右上角图标的地方。 */
-.chat-header { padding: 40px 20px 15px; display: flex; justify-content: space-between; align-items: center; }
+.chat-header { padding: 15px 20px 15px; display: flex; justify-content: space-between; align-items: center; }
 .chat-header h1 { margin: 0; color: rgba(255, 255, 255, 0.95); font-size: 22px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
 /* 右上角的图标（比如加号）：点下去会稍微变透明。 */
 .header-icon { width: 22px; height: 22px; cursor: pointer; transition: opacity 0.2s; display: flex; align-items: center; justify-content: center; }
@@ -711,7 +711,7 @@ body {
 }
 
 /* 聊天界面顶部的标题栏：放返回键、对方名字和“更多”按钮。 */
-.chat-detail-header { padding: 40px 12px 15px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, 0.05); position: relative; z-index: 2000; transition: all 0.3s ease; }
+.chat-detail-header { padding: 15px 12px 15px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, 0.05); position: relative; z-index: 2000; transition: all 0.3s ease; }
 /* 标题栏左半边：把返回键和名字包在一起。 */
 .header-left { display: flex; align-items: center; gap: 10px; }
 /* 名字和状态（比如在线/离线）竖着排的盒子。 */
