@@ -263,7 +263,7 @@ body {
 
 /* 音乐小组件里的进度条：灰色的底。 */
 .music-progress {
-    width: 85%; height: 2px; background: rgba(255, 255, 255, 0.2); border-radius: 2px;
+    width: 80%; height: 2px; background: rgba(255, 255, 255, 0.2); border-radius: 2px;
 }
 /* 音乐进度条的白线：表示听了多少的填充条。 */
 .music-progress-fill {
@@ -316,7 +316,7 @@ body {
 
 /* 唱片机的唱针臂：旁边那根长长的针，控制它旋转移动来模拟播放。 */
 .tonearm {
-    width: 10px; height: 65px; position: absolute; top: -2px; right: 4px; 
+    width: 10px; height: 65px; position: absolute; top: 4px; right: 12px; 
     transform-origin: 5px 5px; transform: rotate(0deg); 
     transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); z-index: 2; pointer-events: none; 
 }
@@ -346,7 +346,7 @@ body {
 
 /* 右下角的电源开关按钮区域。 */
 .power-switch {
-    position: absolute; bottom: 4px; right: 2px; width: 14px; height: 14px;
+    position: absolute; bottom: 8px; right: 10px; width: 14px; height: 14px;
     z-index: 4; pointer-events: none; display: flex; justify-content: center;
     align-items: center; overflow: visible; 
 }
