@@ -1164,4 +1164,12 @@ body {
         grid-template-columns: repeat(3, auto);
         justify-content: space-evenly;
     }
+
+    .nav-bar,
+    .toolbar {
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        border-radius: 0 !important;
+    }
 }
