@@ -32,7 +32,7 @@ body {
     background-color: #333333; 
     -webkit-user-select: none;
     user-select: none;
-    font-family: "KokoroMinchoutai", sans-serif;
+    font-family: "STDongGuanTi", sans-serif;
     font-weight: normal;
     overflow: hidden;
 }
@@ -62,7 +62,7 @@ body {
     width: 100%;
     text-align: center;
     color: white;
-    font-family: "AR PL UKai CN", serif; 
+    font-family: "STDongGuanTi", serif; 
     font-size: 48px; 
     letter-spacing: 1px;
 }
@@ -75,7 +75,7 @@ body {
     width: 100%;
     text-align: center;
     color: rgba(255, 255, 255, 0.8);
-    font-family: "AR PL UKai CN", serif; 
+    font-family: "STDongGuanTi", serif; 
     font-size: 16px; 
     letter-spacing: 2px;
 }
@@ -150,7 +150,7 @@ body {
     top: 15px; left: 20px;
     display: flex; flex-direction: column; align-items: center;
     color: rgba(255, 255, 255, 0.9);
-    font-family: "AR PL UKai CN", serif; 
+    font-family: "STDongGuanTi", serif; 
     font-size: 3.5rem; font-weight: 100; line-height: 0.9; 
     text-align: center; text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     font-variant-numeric: tabular-nums; 
@@ -180,12 +180,12 @@ body {
 .search-input {
     background: transparent; border: none; color: rgba(255, 255, 255, 0.9);
     flex-grow: 1; font-size: 14px; outline: none;
-    font-family: "KokoroMinchoutai"; letter-spacing: 0.5px;
+    font-family: "STDongGuanTi"; letter-spacing: 0.5px;
 }
 
 /* 搜索框未输入时的提示字（比如“搜索”）：半透明的白色字。 */
 .search-input::placeholder {
-    color: rgba(255, 255, 255, 0.5); font-family: "KokoroMinchoutai";
+    color: rgba(255, 255, 255, 0.5); font-family: "STDongGuanTi";
 }
 
 /* 搜索框旁边的小放大镜图标。 */
@@ -232,7 +232,7 @@ body {
 /* APP的名字标签：方块下面那行小字。 */
 .app-label {
     font-size: 10px; color: rgba(255, 255, 255, 0.8);
-    font-family: "KokoroMinchoutai"; letter-spacing: 0.5px; line-height: 1;
+    font-family: "STDongGuanTi"; letter-spacing: 0.5px; line-height: 1;
 }
 
 /* 大号小组件的统一样式：占用更多格子的那种大方块，也是毛玻璃效果。 */
