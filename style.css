@@ -165,7 +165,7 @@ body {
 /* 桌面主体内容区：控制APP图标和组件们放在下半屏的一个大框。 */
 .home-content {
     position: relative; padding: 0 28px; margin-top: auto; margin-bottom: 110px;
-    display: flex; flex-direction: column; gap: 16px; 
+    display: flex; flex-direction: column; gap: 22px; 
 }
 
 /* 桌面搜索框：一个半透明、带毛玻璃特效的长条。 */
@@ -273,7 +273,7 @@ body {
 /* 黑胶唱片机的外壳盒子。 */
 .record-player-container {
     width: 100%; flex-grow: 1; position: relative; display: flex;
-    justify-content: center; align-items: center; margin-top: 6px; transform: scale(1.08); 
+    justify-content: center; align-items: center; margin-top: 6px; transform: scale(1.25); 
 }
 
 /* 唱片机的黑色托盘大底座。 */
