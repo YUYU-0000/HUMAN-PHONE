@@ -442,7 +442,7 @@ body {
 .tab-content.active { display: flex; }
 
 /* 聊天页面的大标题区域：设置边距，留出顶部的空间。 */
-.tab-header-generic { padding: 15px 20px 15px; }
+.tab-header-generic { padding: 30px 20px 15px; }
 /* 大标题文字：比如“CHAT”这几个大字，加粗发白。 */
 .tab-title { color: rgba(255, 255, 255, 0.95); font-size: 22px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin: 0; }
 /* 大标题下的一排小字。 */
@@ -479,7 +479,7 @@ body {
 @keyframes beamUp { 0% { transform: translateX(-50%) scaleY(0); opacity: 0; } 100% { transform: translateX(-50%) scaleY(1); opacity: 1; } }
 
 /* 聊天主界面的头部：放标题和右上角图标的地方。 */
-.chat-header { padding: 15px 20px 15px; display: flex; justify-content: space-between; align-items: center; }
+.chat-header { padding: 30px 20px 15px; display: flex; justify-content: space-between; align-items: center; }
 .chat-header h1 { margin: 0; color: rgba(255, 255, 255, 0.95); font-size: 22px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
 /* 右上角的图标（比如加号）：点下去会稍微变透明。 */
 .header-icon { width: 22px; height: 22px; cursor: pointer; transition: opacity 0.2s; display: flex; align-items: center; justify-content: center; }
@@ -711,7 +711,7 @@ body {
 }
 
 /* 聊天界面顶部的标题栏：放返回键、对方名字和“更多”按钮。 */
-.chat-detail-header { padding: 15px 12px 15px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, 0.05); position: relative; z-index: 2000; transition: all 0.3s ease; }
+.chat-detail-header { padding: 30px 12px 15px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, 0.05); position: relative; z-index: 2000; transition: all 0.3s ease; }
 /* 标题栏左半边：把返回键和名字包在一起。 */
 .header-left { display: flex; align-items: center; gap: 10px; }
 /* 名字和状态（比如在线/离线）竖着排的盒子。 */
@@ -728,7 +728,7 @@ body {
 .detail-more:active { opacity: 0.5; }
 
 /* 多选模式下顶部的特殊栏：平时藏起来，长按多选的时候出现，比如显示“已选择 2 项”。 */
-.ms-header-content { display: none; width: 100%; justify-content: space-between; align-items: center; position: absolute; left: 0; top: 0; height: 100%; padding: 40px 12px 15px; box-sizing: border-box; background: transparent; z-index: 10; color: #fff; font-size: 14px;}
+.ms-header-content { display: none; width: 100%; justify-content: space-between; align-items: center; position: absolute; left: 0; top: 0; height: 100%; padding: 30px 12px 15px; box-sizing: border-box; background: transparent; z-index: 10; color: #fff; font-size: 14px;}
 .screen-chat.multi-select-mode .ms-header-content { display: flex; }
 /* 多选时把正常的标题名字透明隐藏掉。 */
 .screen-chat.multi-select-mode .chat-detail-header > *:not(.ms-header-content) { opacity: 0; pointer-events: none; }
@@ -984,7 +984,7 @@ body {
   mask-size: 51% 10px, 51% 10px, 10px 10px, 100% calc(100% - 20px);
   mask-repeat: no-repeat, no-repeat, repeat-x, no-repeat;
 }
-/* 票据的下半段：和上面一样，给上面挖半圆，对接拼成一张完整的门票。 */
+/* 票据的下半段：和一样，给上面挖半圆，对接拼成一张完整的门票。 */
 .ticket-part.lower {
   border-top: none;
   -webkit-mask-image: radial-gradient(circle at 0 0, transparent 6px, black 6.5px), radial-gradient(circle at 100% 0, transparent 6px, black 6.5px), radial-gradient(circle at 5px 100%, transparent 2.5px, black 3px), linear-gradient(black, black);
