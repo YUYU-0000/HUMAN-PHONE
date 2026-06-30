@@ -129,6 +129,7 @@ body {
     transform: scale(0.92); 
     transition: transform 0.4s cubic-bezier(0.36, 0.66, 0.04, 1), opacity 0.3s ease;
     transform-origin: center center;
+    display: flex; flex-direction: column;
 }
 
 /* 解锁后的魔法：当给手机加了 'unlocked' 这个状态时，桌面变亮放大，锁屏变透明消失。 */
@@ -163,7 +164,7 @@ body {
 
 /* 桌面主体内容区：控制APP图标和组件们放在下半屏的一个大框。 */
 .home-content {
-    position: absolute; bottom: 110px; left: 15px; right: 15px;
+    position: relative; padding: 0 15px; margin-top: auto; margin-bottom: 110px;
     display: flex; flex-direction: column; gap: 16px; 
 }
 
@@ -786,7 +787,7 @@ body {
 .screen-chat.multi-select-mode .msg-row.receiver { padding-left: 28px; }
 
 /* 勾选上这条消息后：小圆圈填成白色，里面画个黑色的对号。 */
-.msg-row.selected .msg-checkbox { background: rgba(255, 249, 240, 0.95); border-color: rgba(255, 249, 240, 0.95); }
+.msg-row.selected .msg-checkbox { background: rgba(255, 249, 240, 0.95); border-radius: 50%; border-color: rgba(255, 249, 240, 0.95); }
 .msg-row.selected .msg-checkbox::after { 
   content: ''; position: absolute; width: 4px; height: 8px; border: solid #1a1a1a; border-width: 0 2px 2px 0; 
   top: 50%; left: 50%; transform: translate(-50%, -60%) rotate(45deg); 
@@ -1120,42 +1121,46 @@ body {
 }
 
 /* =======================================
-   第十四部分：移动端小屏幕适配 (新增部分)
+   第十四部分：全屏/移动端样式重置
 =======================================
 */
-@media (max-width: 500px) {
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-    }
-    
-    .phone-frame {
-        border-radius: 0;
-        box-shadow: none;
-        height: 100vh;
-        width: 100%; 
-        height: 100dvh;
-    }
+.phone-frame {
+    width: 100vw;
+    height: 100dvh;
+    border-radius: 0;
+    box-shadow: none;
+}
 
-    .screen-home,
-    .screen-chat-home,
-    #screenChatHome {
-        top: 0 !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        padding-top: 10px !important;
-    }
+.screen-home {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 0;
+    padding-top: 15px;
+}
 
-    .screen-chat,
-    .profile-screen,
-    .ticket-modal-overlay {
-        top: 0 !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        width: 100% !important;
-    }
+#screenChatHome {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.toolbar {
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+}
+
+.nav-bar {
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+}
+
+.screen-chat, 
+.profile-screen, 
+.ticket-modal-overlay {
+    inset: 0;
 }
